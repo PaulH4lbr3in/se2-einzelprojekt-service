@@ -72,4 +72,19 @@ class GameResultServiceTests {
         assertEquals(2, res[1].id)
     }
 
+    @Test
+    fun test_addGameResult_deleteGameResult() {
+        val gameResult1 = GameResult(0, "player1", 17, 15.3)
+        val gameResult2 = GameResult(1, "player2", 25, 16.0)
+
+        service.addGameResult(gameResult1)
+        service.addGameResult(gameResult2)
+
+        assertEquals(2, service.getGameResults().size)
+
+        service.deleteGameResult(2)
+
+        assertEquals(1, service.getGameResults().size)
+    }
+
 }
